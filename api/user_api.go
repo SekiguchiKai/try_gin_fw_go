@@ -17,7 +17,6 @@ type UserName struct {
 
 // ユーザーを新規生成
 // *gin.Contextは、現在のHTTP requestのcontextを表す。
-// *gin.Contextは、request objects、response objects、 path、 path parameters、 data、registered handlerを持っている。
 func CreateUser(c *gin.Context) {
 	log.Println("CreateUser is called.")
 
@@ -46,11 +45,6 @@ func CreateUser(c *gin.Context) {
 	}
 	util.DebugLog(ac, u.Name)
 
-	// Bindは、リクエストボディを与えられた引数と結びつける。
-	//if err := c.Bind(u); err != nil {
-	//	ErrorLog(ac, err.Error())
-	//	return err
-	//}
 	// 引数で与えられたstatus codeと共に、構造体をJSONにして返す
 	c.JSON(http.StatusCreated, u)
 }

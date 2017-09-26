@@ -27,7 +27,6 @@ func NewUser(name string) *User {
 
 // DatastoreにUserを登録する
 func (u *User) Post(c context.Context) (*User, error) {
-	// echo.Context => context.Contextに変換した後、goonをContextから生成
 	g := goon.FromContext(c)
 	// DatastoreにUserのEntityを登録
 	if _, err := g.Put(u); err != nil {
@@ -40,7 +39,6 @@ func (u *User) Post(c context.Context) (*User, error) {
 
 //  DatastoreからUserを取得する
 func (u *User) Get(c context.Context) (*User, error) {
-	// echo.Context => context.Contextに変換した後、goonをContextから生成
 	g := goon.FromContext(c)
 	// key(userID)を指定してDatastoreからEntityを取得する、エラーの場合のハンドリングを同時に行う
 	if err := g.Get(u); err != nil {
